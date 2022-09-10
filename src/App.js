@@ -1,12 +1,15 @@
-import './App.css';
-
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
 function App() {
   const name = 'Nick'
   return (
-    <div className= 'container'>
-      <h1>Hello World</h1>
-      <h2>Hello {name} </h2>
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<Home/> }/>
+      </Route>
+    </Routes>
   );
 }
 
