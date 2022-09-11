@@ -10,6 +10,7 @@ const videoRef = useRef(null);
         let video = videoRef.current;
         video.srcObject = stream;
         video.play();
+        console.log(video);
       })
       .catch(err => {
         console.error("error:", err);
@@ -18,13 +19,13 @@ const videoRef = useRef(null);
   useEffect(() => {
     getVideo();
   }, []);
-
+return (
   <main className="chatroom">
       <header>
         <h1>Show your video</h1>
       </header>
       <video id="videoElement" ref={videoRef} />
-    </main>
-};
+  </main>
+)};
 
 export default ChatRoom;
