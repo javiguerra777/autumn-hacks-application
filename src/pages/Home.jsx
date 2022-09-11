@@ -4,7 +4,7 @@ import Header from '../components/header'
 const Home = () => {
   return (
     <div className = 'container'>
-    <Header title = 'Chat Rooms'/>
+    <Header/>
     </div>
   )
 }

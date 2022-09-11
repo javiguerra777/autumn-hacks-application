@@ -1,21 +1,19 @@
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Button from './button'
-import HomeButton from './HomeButton'
 
-const Header = (props) => {
+const Header = () => {
     return (
-    <header className = 'header'>
-        <div class = "wrapper">
-        <h1 style = {headingStyle}>{props.title}</h1> 
-        <Button id = 'chat' color= 'skyblue' text = 'View Chats'>
-
-        </Button>
-        </div>
+      <header className='header'>  
+        <div className='sign-up-container'>
+          <NavLink to="/login">
+            <Button id = 'logIn' color= 'skyblue' text = 'Log In'></Button>
+          </NavLink>
+          <NavLink to="/signup">
+            <Button id = 'signIn' color= 'white' text = 'Sign Up'></Button>
+          </NavLink>
         
-        <div class = 'sign-up-container'>
-        <Button id = 'logIn' color= 'skyblue' text = 'Log In' ></Button>
-        <Button id = 'signIn' color= 'white' text = 'Sign Up'></Button>
-        <HomeButton id = 'HomeButton' color= "white" text = 'Home'></HomeButton>
         </div>
     </header>
     )
@@ -27,11 +25,6 @@ Header.defaultProps = {
 
 Header.propTypes = {
     title: PropTypes.string.isRequired,
-}
-
-const headingStyle = {
-    color: 'lightblue',
-    backgroundColor: 'transparent'
 }
 
 export default Header

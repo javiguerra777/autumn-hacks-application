@@ -1,0 +1,11 @@
+#room {
+  color: white;
+  margin: 5px 15px 10px 15px;
+}
+.room-container {
+  background-color: lightgray;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 90vw;
+}
