@@ -127,9 +127,9 @@ body {
   transform: scale(0.95);
 }
 #logIn{
-  border:2px white solid;
+  border:2px wheat solid;
 }
 #signIn{
   color:skyblue;
-  border: 2px white solid;
+  border: 2px wheat solid;
 }
