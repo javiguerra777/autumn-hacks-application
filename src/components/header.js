@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import Button from './button'
+import HomeButton from './HomeButton'
 
 const Header = (props) => {
     return (
@@ -14,6 +15,7 @@ const Header = (props) => {
         <div class = 'sign-up-container'>
         <Button id = 'logIn' color= 'skyblue' text = 'Log In' ></Button>
         <Button id = 'signIn' color= 'white' text = 'Sign Up'></Button>
+        <HomeButton id = 'HomeButton' color= "white" text = 'Home'></HomeButton>
         </div>
     </header>
     )
