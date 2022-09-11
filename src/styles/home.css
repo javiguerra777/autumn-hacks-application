@@ -1,0 +1,22 @@
+.homepage {
+  height: 100vh;
+  width: 100vw;
+  background-color: orange;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#videoElement {
+  background-color: white;
+  height: 500px;
+  width: 500px;
+  border: solid 5px black;
+  border-radius: 1em;
+}
+#videoElement {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  /* Safari and Chrome */
+  -moz-transform: rotateY(180deg);
+  /* Firefox */
+}
