@@ -4,10 +4,17 @@ import Button from './button'
 const Header = (props) => {
     return (
     <header className = 'header'>
+        <div class = "wrapper">
         <h1 style = {headingStyle}>{props.title}</h1> 
-        <Button color= 'skyblue' text = 'View Chats'>
+        <Button id = 'chat' color= 'skyblue' text = 'View Chats'>
 
         </Button>
+        </div>
+        
+        <div class = 'sign-up-container'>
+        <Button id = 'logIn' color= 'skyblue' text = 'Log In' ></Button>
+        <Button id = 'signIn' color= 'white' text = 'Sign Up'></Button>
+        </div>
     </header>
     )
 }
