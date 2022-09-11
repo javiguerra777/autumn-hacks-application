@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ChatRoom from "./pages/ChatRoom";
+import Friends from "./pages/Friends";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/chatroom/:id" element={<ChatRoom />} />
+        <Route path="/friends" element={<Friends />} />
       </Route>
     </Routes>
   );

@@ -1,8 +1,10 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../styles/home.css';
 
 const ChatRoom = () => {
-const videoRef = useRef(null);
+  const videoRef = useRef(null);
+  const navigate = useNavigate();
   const getVideo = () => {
     navigator.mediaDevices
       .getUserMedia({ video: { width: 300 } })
@@ -22,9 +24,12 @@ const videoRef = useRef(null);
 return (
   <main className="chatroom">
       <header>
-        <h1>Show your video</h1>
+      <h1>Show your video</h1>
+      <button onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
       </header>
-      <video id="videoElement" ref={videoRef} />
+    <video id="videoElement" ref={videoRef} />
+    <aside></aside>
+    <footer></footer>
   </main>
 )};
 

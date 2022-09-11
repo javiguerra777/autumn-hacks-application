@@ -2,7 +2,6 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Button from './button'
-import HomeButton from './HomeButton'
 
 const Header = () => {
     return (
@@ -14,7 +13,7 @@ const Header = () => {
           <NavLink to="/signup">
             <Button id = 'signIn' color= 'white' text = 'Sign Up'></Button>
           </NavLink>
-        <HomeButton id = 'HomeButton' color= "white" text = 'Home'></HomeButton>
+        
         </div>
     </header>
     )

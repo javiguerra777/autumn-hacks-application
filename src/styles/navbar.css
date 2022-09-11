@@ -1,0 +1,16 @@
+#nav-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: auto;
+}
+.item {
+  margin: 0 5px 0 5px;
+}
+.friends {
+  border: solid 1px white;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
