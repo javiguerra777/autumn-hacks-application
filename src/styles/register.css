@@ -1,0 +1,37 @@
+#register-page {
+  color: white;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+header {
+  margin-top: 2em;
+}
+form {
+  margin-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40em;
+}
+input {
+  width: 35em;
+  height: 2em;
+  margin-bottom: 1em;
+  border-bottom: 5px solid gray;
+}
+.submit-btn {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 10em;
+  padding: 5px 0 5px 0;
+  cursor: pointer;
+}
+#first {
+  margin-top: 1em;
+}
+#options {
+  margin-top: 1em;
+}
