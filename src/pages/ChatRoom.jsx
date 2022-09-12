@@ -25,7 +25,7 @@ return (
   <main className="chatroom">
       <header>
       <h1>Show your video</h1>
-      <button onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+      <button className = "dbButton"onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
       </header>
     <video id="videoElement" ref={videoRef} />
     <aside></aside>

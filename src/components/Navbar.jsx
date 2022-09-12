@@ -14,7 +14,7 @@ const Navbar = () => {
       <HomeButton id = 'HomeButton' color= "white" text = 'Home'></HomeButton>
       </NavLink>
       <NavLink to="/friends" className="item friends">Friends</NavLink>
-      <button className="item" type="button" onClick={signout}>Sign out</button>
+      <button className="sign-out item" type="button" onClick={signout}>Sign out</button>
     </nav>
   )
 }
