@@ -7,29 +7,24 @@ import '../styles/dashboard.css';
 const rooms = [
   {
     "id": 0,
-    "name": "name",
-    "description": "first group chat"
+    "name": "First Room",
+    "description": "Chat #1"
   },
   {
     "id": 1,
-    "name": "second room",
-    "description": "second group chat"
+    "name": "Second Room",
+    "description": "Chat #2"
   },
   {
     "id": 2,
-    "name": "third room",
-    "description": "third group chat"
+    "name": "Third Room",
+    "description": "Chat #3"
   },
   {
     "id": 3,
-    "name": "fourth room",
-    "description": "fourth group chat"
-  },
-  {
-    "id": 4,
-    "name": "fifth room",
-    "description": "fifth group chat"
-  },
+    "name": "Fourth Room",
+    "description": "Chat #4"
+  }
 ]
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -44,8 +39,8 @@ const Dashboard = () => {
           return (
             <div id="room" key={nanoid()}>
               <h1>{name}</h1>
-              <p>{description}</p>
-              <button type="button" onClick={()=> navigate(`/chatroom/${id}`)}>click me</button>
+              <p className= "desc">{description}</p>
+              <button className = "roomText" type="button" onClick={()=> navigate(`/chatroom/${id}`)}>Enter Room</button>
             </div>
           )
         })}
