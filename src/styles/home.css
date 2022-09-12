@@ -5,11 +5,41 @@
   flex-direction: column;
   align-items: center;
 }
-#videoElement {
-  margin-top: 35px;
+.message-container {
   background-color: white;
-  height: 500px;
-  width: 500px;
+  height: 95%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-content {
+  display: flex;
+  flex-direction: row;
+  height: 90vh;
+  width: 100vw;
+}
+#aside-bar {
+  background-color: whitesmoke;
+  height: 100%;
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+}
+.msg-form {
+  height: 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#message {
+  border: none;
+  width: 95%;
+}
+#videoElement {
+  background-color: white;
+  height: 100%;
+  width: 50vw;
   border: solid 10px rgb(0, 132, 255);
   border-radius: 1em;
 }
@@ -21,17 +51,37 @@
   /* Firefox */
 }
 
+#footer-options {
+  height: 10vh;
+  width: 100%;
+  background-color: #3b3c36;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-left: 1em;
+}
 .dbButton {
 font-family: Georgia;
 font-size: 17px;
 background-color: rgb(84, 192, 84);
-position:fixed;
-right: 385px;
-bottom: 277px;
 height: 60px;
 margin-top: 18px;
 border: solid 2px rgb(0, 255, 0);
 border-radius: 30px;
 width: 200px;
 cursor: pointer;
+margin-bottom: 0.5em;
+}
+
+.button {
+  cursor: pointer;
+  margin-left: 0.5em;
+  border-radius: 3em;
+  font-size: 2rem;
+  padding: 5px;
 }
