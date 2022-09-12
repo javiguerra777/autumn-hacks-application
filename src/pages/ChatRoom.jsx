@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/home.css';
+import { motion } from "framer-motion"
+
 
 const ChatRoom = () => {
   const videoRef = useRef(null);
@@ -25,7 +27,11 @@ return (
   <main className="chatroom">
       <header>
       <h1>Show your video</h1>
-      <button className = "dbButton"onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+      <motion.button className = "dbButton"onClick={() => navigate('/dashboard')}
+      whileHover = {{scale: 1.1}}
+      whileTap = {{scale : 0.9}}
+      >Return to Dashboard
+      </motion.button>
       </header>
     <video id="videoElement" ref={videoRef} />
     <aside></aside>
