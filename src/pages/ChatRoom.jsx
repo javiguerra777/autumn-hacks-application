@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineVideoCamera, AiOutlineAudio, AiOutlineAudioMuted } from 'react-icons/ai';
 import { BiVideoOff } from 'react-icons/bi';
@@ -6,10 +6,12 @@ import { BsChatLeft } from 'react-icons/bs';
 import { FiUsers } from 'react-icons/fi';
 import Aside from '../components/Aside';
 import UsersAside from '../components/UsersAside';
+import UserContext from '../context/context';
 import '../styles/home.css';
 import '../styles/sliders.css';
 
 const ChatRoom = () => {
+  const { user } = useContext(UserContext);
   const [chat, setChat] = useState(true);
   const [users, setUsers] = useState(false);
   const [audio, setAudio] = useState(true);
@@ -62,7 +64,9 @@ const ChatRoom = () => {
   function sendMessage(e) {
     e.preventDefault();
     setMessages((prev) => [...prev, {
-      name: 'user',
+      name: user.name,
+      email: user.email,
+      userId: user.userId,
       message
     }]);
     setMessage('');
@@ -94,7 +98,6 @@ const ChatRoom = () => {
       playVideo();
     }
   }
-  console.log(audio);
 return (
   <main className="chatroom">
     <section className='main-content'>

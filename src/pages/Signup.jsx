@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc, where, query, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import UserContext from '../context/context';
 
 const Signup = () => {
+  const { setUser } = useContext(UserContext);
   const userCollection = collection(db, 'users');
   const navigate = useNavigate();
   const [name, setName] = useState('');
@@ -17,14 +19,29 @@ const Signup = () => {
   async function registerAccount(e) {
     e.preventDefault();
     try {
-      await createUserWithEmailAndPassword(auth, email, password).then((cred) => {
+      const user = await createUserWithEmailAndPassword(auth, email, password).then((cred) => {
         return addDoc(userCollection, {
           userId: cred.user.uid,
           email,
           username: name,
         })
       })
-      navigate('/dashboard');
+      if (user) {
+        const q = query(
+          userCollection,
+          where('email', '==', email)
+        )
+        async function getUserFromDB() {
+          let userData = {};
+          const querySnapshot = await getDocs(q);
+            querySnapshot.forEach((doc) => {
+              userData = { ...doc.data() };
+            });
+          setUser({...userData, loggedIn: true});
+        }
+        await getUserFromDB();
+        navigate('/dashboard');
+      };
     } catch (err) {
       console.log(err);
     }

@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import HomeButton from './HomeButton';
+import UserContext from '../context/context';
 import '../styles/navbar.css';
 
 const Navbar = () => {
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
   function signout() {
+    setUser(null);
     navigate('/');
   }
   return (
