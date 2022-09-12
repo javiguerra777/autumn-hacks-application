@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import HomeButton from './HomeButton';
 import '../styles/navbar.css';
+import { motion } from "framer-motion"
+
 
 const Navbar = () => {
   const navigate = useNavigate();

@@ -3,6 +3,7 @@
   margin: 5px 15px 10px 15px;
 }
 .room-container {
+  margin-top: 20px;
   justify-content: center;
   border: solid 5px rgb(0, 208, 255);
   border-radius: 20px;
