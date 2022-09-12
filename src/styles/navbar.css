@@ -4,13 +4,47 @@
   align-items: center;
   width: auto;
 }
+
 .item {
-  margin: 0 5px 0 5px;
+  margin: 0 10px 15px 10px;
 }
+
+.friends:active,
+.sign-out:active {
+  transform: scale(0.90);
+}
+
+.friends,
+.sign-out {
+  font-family: Georgia;
+  font-size: 30px;
+}
+
 .friends {
-  border: solid 1px white;
+  color: black;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 5px black;
+  height: 70px;
+  border-radius: 15px;
+  background-color:deepskyblue;
 }
 a {
   text-decoration: none;
   color: white;
+}
+
+.sign-out {
+  color: black;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 5px black;
+  height: 60px;
+  border-radius: 15px;
+  background-color:rgb(0, 255, 0);
+  cursor: pointer;
 }
