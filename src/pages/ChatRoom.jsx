@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { AiOutlineVideoCamera, AiOutlineAudio, AiOutlineAudioMuted } from 'react-icons/ai';
 import { BiVideoOff } from 'react-icons/bi';
 import { BsChatLeft } from 'react-icons/bs';
@@ -7,32 +7,31 @@ import { FiUsers } from 'react-icons/fi';
 import Aside from '../components/Aside';
 import UsersAside from '../components/UsersAside';
 import UserContext from '../context/context';
+import { socket } from '../App';
 import '../styles/home.css';
 import '../styles/sliders.css';
 
 const ChatRoom = () => {
+  const { id } = useParams();
   const { user } = useContext(UserContext);
+  const [allUsers, setAllUsers] = useState([]);
   const [chat, setChat] = useState(true);
   const [users, setUsers] = useState(false);
   const [audio, setAudio] = useState(true);
   const [video, setVideo] = useState(true);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
-  const [mystream, setmystream] = useState(null);
-  const videoRef = useRef(null);
+  const [mystream, setmystream] = useState();
+  const videoRef = useRef();
   const navigate = useNavigate();
   
   const playVideo = () => {
-    navigator.mediaDevices
-            .getUserMedia({ video: true, audio: true })
-            .then((stream) => {
-                videoRef.current.srcObject = stream;
-              videoRef.current.autoplay = true;
-              if (audio) {
-                videoRef.current.muted = false;
-              }
-                setmystream(stream);
-            });
+    mystream.getTracks().forEach(function (track) {
+                if (track.readyState === "live" && 
+                    track.kind === "video") {
+                  track.enabled = true;
+                }
+    });
   }
   const stopVideo = () => {
     mystream.getTracks().forEach(function (track) {
@@ -58,17 +57,58 @@ const ChatRoom = () => {
                 }
             });
   }
+  // useEffects
   useEffect(() => {
-    playVideo();
+    navigator.mediaDevices
+            .getUserMedia({ video: true, audio: true })
+            .then((stream) => {
+                videoRef.current.srcObject = stream;
+                videoRef.current.autoplay = true;
+                videoRef.current.muted = false;
+              
+                setmystream(stream);
+            });
   }, []);
+  useEffect(() => {
+    console.log(videoRef);
+    socket.emit('join_room', {
+      username: user.username,
+      roomId: id,
+      video,
+      audio,
+      videoRef: '',
+    })
+    return () => {
+      socket.emit('leave_room', id)
+    }
+  }, [id, user.username])
+  // users join and array gets updated
+  useEffect(() => {
+    socket.on('all_current_users', (data) => {
+      setAllUsers(data);
+    })
+  }, []);
+  // user leaves and array is updated
+  useEffect(() => {
+    socket.on('new_current_users', (data) => {
+      setAllUsers(data);
+    })
+  }, []);
+  useEffect(() => {
+    socket.on('new_message', (data) => {
+      setMessages((prev) => [...prev, data]);
+    });
+  }, [])
+  // functions
   function sendMessage(e) {
     e.preventDefault();
-    setMessages((prev) => [...prev, {
-      name: user.name,
+    const sentMessage = {
+      name: user.username,
       email: user.email,
       userId: user.userId,
-      message
-    }]);
+      message,
+    }
+    socket.emit('send_message', sentMessage)
     setMessage('');
   }
   function displayChat() {
@@ -94,14 +134,13 @@ const ChatRoom = () => {
       stopVideo();
     } else {
       setVideo(true);
-      setAudio(true);
       playVideo();
     }
   }
 return (
   <main className="chatroom">
     <section className='main-content'>
-      {chat && !users ? <Aside messages={messages} sendMessage={sendMessage} message={message} setMessage={setMessage} /> : <UsersAside />}
+      {chat && !users ? <Aside messages={messages} sendMessage={sendMessage} message={message} setMessage={setMessage} /> : <UsersAside allUsers={allUsers} />}
       {video ? <video id="videoElement" ref={videoRef} /> : <video id="videoElement" ref={videoRef} />
  }
       <div className="btn-container">

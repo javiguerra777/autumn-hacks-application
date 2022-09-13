@@ -46,13 +46,18 @@ io.on('connection', (socket) => {
 }  
   socket.on('join_room', async ({ username, roomId, video, audio, videoRef }) => {
     const pUser = await joinUser(socket.id, username, roomId, video, audio, videoRef);
-    console.log('all users:', users);
+    // console.log('all users:', users);
     const usersInRoom = users.filter((user) => {
       return user.room === roomId;
     });
     socket.join(pUser.room);
     io.to(pUser.room).emit('all_current_users', usersInRoom)
   });
+  
+  socket.on('send_message', async (data) => {
+    const pUser = await getCurrentUser(socket.id);
+    io.to(pUser.room).emit('new_message', data);
+  })
 
   socket.on('leave_room', async (room) => {
     socket.leave(room);

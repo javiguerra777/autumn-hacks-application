@@ -1,6 +1,8 @@
-import React from 'react'
+import React from 'react';
+import { nanoid } from 'nanoid';
 
-const UsersAside = ({allUsers}) => {
+const UsersAside = ({ allUsers }) => {
+  console.log(allUsers)
   return (
     <aside id="aside-bar">
       <header>
@@ -8,10 +10,10 @@ const UsersAside = ({allUsers}) => {
       </header>
       <section className="users-container">
 
-      {allUsers?.map(({ user, video }) => {
+      {allUsers?.map(({ username, video }) => {
         return (
-          <div>
-            <p>{user}</p>
+          <div key={nanoid()}>
+            <p>{username}</p>
           </div>
         )
       })}

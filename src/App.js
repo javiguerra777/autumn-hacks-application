@@ -1,6 +1,7 @@
 
 import React, { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import { io } from 'socket.io-client';
 import Layout from "./pages/Layout";
 import Home from "./pages/Home";
 import Dashboard from "./pages/Dashboard";
@@ -10,7 +11,9 @@ import ChatRoom from "./pages/ChatRoom";
 import Friends from "./pages/Friends";
 import UserContext from "./context/context";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+export const socket = io(
+  'http://localhost:5500'
+);
 function App() {
   const [user, setUser] = useState(null);
   return (

@@ -1,12 +1,13 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 
 const Aside = ({messages, sendMessage, message, setMessage }) => {
   return (
     <aside id="aside-bar">
-        <div className="message-container">
+        <div className="message-container" >
           {messages?.map(({name, message}) => {
             return (
-              <div>
+              <div key={nanoid()}>
                 <h1>{name}</h1>
                 <p>{message}</p>
               </div>
