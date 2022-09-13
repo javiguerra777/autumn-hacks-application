@@ -6,28 +6,6 @@ import { db } from '../firebase/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import '../styles/dashboard.css';
 
-// const rooms = [
-//   {
-//     "id": 0,
-//     "name": "First Room",
-//     "description": "Chat #1"
-//   },
-//   {
-//     "id": 1,
-//     "name": "Second Room",
-//     "description": "Chat #2"
-//   },
-//   {
-//     "id": 2,
-//     "name": "Third Room",
-//     "description": "Chat #3"
-//   },
-//   {
-//     "id": 3,
-//     "name": "Fourth Room",
-//     "description": "Chat #4"
-//   }
-// ]
 const Dashboard = () => {
   const roomsCollection = collection(db, 'rooms');
   const [rooms, setRooms] = useState([]);
@@ -45,7 +23,6 @@ const Dashboard = () => {
     }
     getRooms();
   }, []);
-  console.log(rooms);
   return (
     <main>
       <div className = "wrapper">

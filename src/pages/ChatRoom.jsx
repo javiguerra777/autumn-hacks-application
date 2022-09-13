@@ -65,18 +65,19 @@ const ChatRoom = () => {
                 videoRef.current.srcObject = stream;
                 videoRef.current.autoplay = true;
                 videoRef.current.muted = false;
-              
                 setmystream(stream);
             });
   }, []);
+  console.log('mystream: ', mystream);
   useEffect(() => {
-    console.log(videoRef);
+    console.log('mystream: ', mystream);
+    // console.log('vid ref:', videoRef);
     socket.emit('join_room', {
       username: user.username,
       roomId: id,
       video,
       audio,
-      videoRef: '',
+      videoRef: mystream,
     })
     return () => {
       socket.emit('leave_room', id)
