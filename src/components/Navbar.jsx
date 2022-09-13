@@ -3,6 +3,8 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import HomeButton from './HomeButton';
 import UserContext from '../context/context';
 import '../styles/navbar.css';
+import { motion } from "framer-motion"
+
 
 const Navbar = () => {
   const { setUser } = useContext(UserContext);

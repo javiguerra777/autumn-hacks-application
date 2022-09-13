@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 import { db } from '../firebase/firebase';
 import { collection, getDocs } from 'firebase/firestore';
 import '../styles/dashboard.css';
+import { motion } from "framer-motion"
+
 
 const Dashboard = () => {
   const roomsCollection = collection(db, 'rooms');
@@ -36,7 +38,11 @@ const Dashboard = () => {
             <div id="room" key={nanoid()}>
               <h1>{name}</h1>
               <p className= "desc">{description}</p>
-              <button className = "roomText" type="button" onClick={()=> navigate(`/chatroom/${id}`)}>Enter Room</button>
+              <motion.button className = "roomText" type="button" onClick={()=> navigate(`/chatroom/${id}`)}
+              whileHover = {{scale: 1.1}}
+              whileTap = {{scale : 0.9}}
+              >Enter Room
+              </motion.button>
             </div>
           )
         })}

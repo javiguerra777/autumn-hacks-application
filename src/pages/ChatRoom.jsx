@@ -10,6 +10,8 @@ import UserContext from '../context/context';
 import { socket } from '../App';
 import '../styles/home.css';
 import '../styles/sliders.css';
+import { motion } from "framer-motion"
+
 
 const ChatRoom = () => {
   const { id } = useParams();
@@ -145,7 +147,8 @@ return (
       {video ? <video id="videoElement" ref={videoRef} /> : <video id="videoElement" ref={videoRef} />
  }
       <div className="btn-container">
-        <button className = "dbButton"onClick={() => navigate('/dashboard')}>Return to Dashboard</button>
+        <motion.button className = "dbButton"onClick={() => navigate('/dashboard')} whileHover = {{scale: 1.1}}
+      whileTap = {{scale : 0.9}}>Return to Dashboard</motion.button>
       </div>
     </section>
     <footer id="footer-options">
