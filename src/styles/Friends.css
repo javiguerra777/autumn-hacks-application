@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+*{
+    margin: 0;
+    padding: 0;
+}
+ @media(max-width: 760px){
+    .title{
+        font-size: 75px;
+    }
+ }
+
+.navigation{
+   position: fixed;
+    top: 5%;
+    right:2%;
+}
+
+#HomeButton{
+    width:85px;
+    height:40px;
+    font-size: 14px;
+}
+a{
+    border-radius: 18px;
+    width:75px;
+    height:35px;
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items:center;
+    justify-content: space-around;
+    background-color: rgb(100, 156, 179);
+}
+.item{
+    width:85px;
+    height:40px;
+    font-size: 14px;
+    border-radius: 18px;
+}
+
+
+img{
+    height:20px;
+    width:20px;
+}
+.friend-wrap{
+    display:grid;
+    position: absolute;
+    left:5%;
+    top:20%;
+}
+.add-friend{
+    width:9em;
+    height: 3.5em;
+    padding: 1px;
+    border-radius: 1em;
+    background-color: rgb(74, 190, 74);
+    border: 2px rgb(146, 226, 146) solid;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: bolder;
+    color:wheat;
+}
+
+.friend-area{
+    margin-top: 1em;
+    resize: none;
+    margin-top: 1em;
+    border: 2px rgb(167, 212, 230) solid;
+    padding: 2em;
+    background-color: rgb(80, 144, 160);
+}
+.labels{
+    margin-right: 1em;
+    color:white;
+    font-weight: bolder;
+}
+
+input{
+    width: 20em;
+    height: 1.3em;
+    border-radius: 5px;
+    border:none;
+    padding-left: 5px;
+}
+
+input:focus{
+    outline: none;
+    border: 1px rgb(175, 223, 241) solid;
+}
+/*
+.title{
+    position:absolute;
+    top: 5%;
+    left:7%;
+    font-size: 3em;
+    font-family: Pacifico;
+    text-shadow: 3px 0px skyblue;
+    color:black;
+
+    
+}
+*/
+.title {
+    position:absolute;
+    top: 5%;
+    left:5%;
+    font-size: 3em;
+    font-family: Pacifico;
+    animation: neonAnim 2s alternate-reverse infinite;
+    color: #4cd5df;
+}
+@keyframes neonAnim {
+    from {
+        text-shadow:
+          0 0 10px #4cd5df,
+          0 0 40px #4cd5df,
+          0 0 100px #4cd5df;;
+      }
+      to {
+        text-shadow:
+          0 0 5px rgba(0, 123, 255, .7),
+          0 0 20px rgba(0, 123, 255, .7),
+          0 0 60px rgba(0, 123, 255, .7);
+      }
+}
