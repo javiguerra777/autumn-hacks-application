@@ -46,7 +46,7 @@ io.on('connection', (socket) => {
 }  
   socket.on('join_room', async ({ username, roomId, video, audio, videoRef }) => {
     const pUser = await joinUser(socket.id, username, roomId, video, audio, videoRef);
-    // console.log('all users:', users);
+    console.log('all users:', users);
     const usersInRoom = users.filter((user) => {
       return user.room === roomId;
     });
