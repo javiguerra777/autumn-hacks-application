@@ -12,7 +12,7 @@ import Friends from "./pages/Friends";
 import UserContext from "./context/context";
 import ProtectedRoute from "./components/ProtectedRoute";
 export const socket = io(
-  'http://localhost:5500'
+  'https://videochat-server-ah.herokuapp.com/'
 );
 function App() {
   const [user, setUser] = useState(null);
