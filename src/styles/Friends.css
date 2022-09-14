@@ -20,7 +20,7 @@
     height:40px;
     font-size: 14px;
 }
-a{
+.link{
     border-radius: 18px;
     width:75px;
     height:35px;
@@ -78,7 +78,7 @@ img{
     font-weight: bolder;
 }
 
-input{
+.input{
     width: 20em;
     height: 1.3em;
     border-radius: 5px;
@@ -86,23 +86,11 @@ input{
     padding-left: 5px;
 }
 
-input:focus{
+.input:focus{
     outline: none;
     border: 1px rgb(175, 223, 241) solid;
 }
-/*
-.title{
-    position:absolute;
-    top: 5%;
-    left:7%;
-    font-size: 3em;
-    font-family: Pacifico;
-    text-shadow: 3px 0px skyblue;
-    color:black;
 
-    
-}
-*/
 .title {
     position:absolute;
     top: 5%;

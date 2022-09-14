@@ -36,3 +36,11 @@ input {
 #options {
   margin-top: 1em;
 }
+.login-error {
+  margin-top: 1em;
+  color: red;
+}
+.pwd-btn {
+  background-color: white;
+  padding: 5px;
+}

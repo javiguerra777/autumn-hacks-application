@@ -4,7 +4,6 @@ import { AiOutlineVideoCamera, AiOutlineAudio, AiOutlineAudioMuted } from 'react
 import { BiVideoOff } from 'react-icons/bi';
 
 const UsersAside = ({ allUsers }) => {
-  console.log(allUsers)
   return (
     <aside id="aside-bar">
       <header className="aside-header">
@@ -12,11 +11,11 @@ const UsersAside = ({ allUsers }) => {
       </header>
       <section className="users-container">
 
-      {allUsers?.map(({ username, video, audio }) => {
+      {allUsers?.map(({ username, video, audio, videoRef }) => {
         return (
           <div className="all-users-ctn" key={nanoid()}>
             <p>{username}</p>
-            <video className="user-video" />
+            <video className="user-video" ref={videoRef} />
             <footer id="user-disp-footer">
               {video ? <AiOutlineVideoCamera size="25px" /> : <BiVideoOff size="25px" />}
               {audio ? <AiOutlineAudio size="25px" /> : <AiOutlineAudioMuted size="25px" />}

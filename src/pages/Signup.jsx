@@ -4,6 +4,7 @@ import { collection, addDoc, where, query, getDocs } from 'firebase/firestore';
 import { auth, db } from '../firebase/firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import UserContext from '../context/context';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 
 const Signup = () => {
   const { setUser } = useContext(UserContext);
@@ -12,9 +13,18 @@ const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [showPwd, setShowPwd] = useState(false);
   let disabled = false;
   if (password.length < 10) {
     disabled = true;
+  }
+  function toggleDisPwd() {
+    if (showPwd) {
+      setShowPwd(false);
+    } else {
+      setShowPwd(true);
+    }
   }
   async function registerAccount(e) {
     e.preventDefault();
@@ -43,11 +53,12 @@ const Signup = () => {
         navigate('/dashboard');
       };
     } catch (err) {
-      console.log(err);
+      setError(err.message)
     }
   }
   return (
     <main id="register-page">
+      {error && <h1 className="login-error">{error}</h1>}
       <header>
         <h1>Sign up for an account</h1>
       </header>
@@ -62,7 +73,8 @@ const Signup = () => {
         </label>
         <label htmlFor="password">
           <p>Password:</p>
-          <input type="password" id="password"  placeholder="Password must be 10 characters" value={password} onChange={({target: {value}}) => setPassword(value) } />
+          <input type="password" id="password" placeholder="Password must be 10 characters" value={password} onChange={({ target: { value } }) => setPassword(value)} />
+          <button className="pwd-btn" type="button" onClick={toggleDisPwd}>{!showPwd ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</button>
         </label>
         <button className='submit-btn' type="submit" disabled={disabled}>Register Account</button>
       </form>

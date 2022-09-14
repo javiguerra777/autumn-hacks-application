@@ -38,11 +38,11 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 250vh 100vh;
-
-
-  
 }
 
+a {
+  cursor: pointer;
+}
 .container {
   max-width: 70vh;
   margin: 1px auto;

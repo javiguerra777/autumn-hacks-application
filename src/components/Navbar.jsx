@@ -3,8 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import HomeButton from './HomeButton';
 import UserContext from '../context/context';
 import '../styles/navbar.css';
-import { motion } from "framer-motion"
-
 
 const Navbar = () => {
   const { setUser } = useContext(UserContext);
@@ -15,10 +13,10 @@ const Navbar = () => {
   }
   return (
     <nav id="nav-bar">
-      <NavLink className="item" to="/dashboard">
+      <NavLink className="item link" to="/dashboard">
       <HomeButton id = 'HomeButton' color= "white" text = 'Home'></HomeButton>
       </NavLink>
-      <NavLink to="/friends" className="item friends">Friends</NavLink>
+      <NavLink to="/friends" className="item friends link">Friends</NavLink>
       <button className="sign-out item" type="button" onClick={signout}>Sign out</button>
     </nav>
   )

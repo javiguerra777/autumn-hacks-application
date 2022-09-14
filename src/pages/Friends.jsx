@@ -16,11 +16,11 @@ const Friends = () => {
         <button type = "button" className='add-friend'>Add Friend</button>
       <p class = "friend-area">
         <p><label className='labels'>Name</label>
-        <input type="text" /></p>
+        <input type="text" className='input' /></p>
         <p><label className='labels'>Email </label>
-        <input type="email" /></p>
+        <input type="email" className='input'/></p>
         <p><label className='labels'>Phone</label>
-        <input type="number" /></p>
+        <input type="number" className='input'/></p>
         
         </p>
         <p class = "show-friend"></p>

@@ -22,8 +22,6 @@ app.get('/', async (req, res) => {
   }
 });
 
-
-
 const users = [];
 io.on('connection', (socket) => {
   // joins room
@@ -54,6 +52,12 @@ io.on('connection', (socket) => {
     io.to(pUser.room).emit('all_current_users', usersInRoom)
   });
   
+  socket.on('change_audio', async (data) => {
+    
+  });
+  socket.on('change_video', async (data) => {
+
+  });
   socket.on('send_message', async (data) => {
     const pUser = await getCurrentUser(socket.id);
     io.to(pUser.room).emit('new_message', data);

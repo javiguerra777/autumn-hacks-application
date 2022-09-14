@@ -59,9 +59,8 @@ const ChatRoom = () => {
                 }
             });
   }
-  // useEffects
-  useEffect(() => {
-    navigator.mediaDevices
+  const loadVideo = () => {
+      navigator.mediaDevices
             .getUserMedia({ video: true, audio: true })
             .then((stream) => {
                 videoRef.current.srcObject = stream;
@@ -69,22 +68,24 @@ const ChatRoom = () => {
                 videoRef.current.muted = false;
                 setmystream(stream);
             });
-  }, []);
-  console.log('mystream: ', mystream);
+  }
+  // useEffects
   useEffect(() => {
-    console.log('mystream: ', mystream);
-    // console.log('vid ref:', videoRef);
-    socket.emit('join_room', {
-      username: user.username,
-      roomId: id,
-      video,
-      audio,
-      videoRef: mystream,
-    })
-    return () => {
-      socket.emit('leave_room', id)
+    async function loadRoom() {
+      await loadVideo();
+      await socket.emit('join_room', {
+        username: user.username,
+        roomId: id,
+        video,
+        audio,
+        videoRef: mystream
+     })
     }
-  }, [id, user.username])
+    loadRoom();
+    return () => {
+      socket.emit('leave_room', id);
+    }
+  }, []);
   // users join and array gets updated
   useEffect(() => {
     socket.on('all_current_users', (data) => {
@@ -101,7 +102,7 @@ const ChatRoom = () => {
     socket.on('new_message', (data) => {
       setMessages((prev) => [...prev, data]);
     });
-  }, [])
+  }, []);
   // functions
   function sendMessage(e) {
     e.preventDefault();

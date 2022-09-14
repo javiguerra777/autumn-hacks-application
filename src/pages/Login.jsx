@@ -9,6 +9,7 @@ import {
 } from 'firebase/firestore';
 import { db, auth } from '../firebase/firebase';
 import UserContext from '../context/context';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import '../styles/register.css';
 
 const Login = () => {
@@ -17,9 +18,18 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showPwd, setShowPwd] = useState(false);
+  const [error, setError] = useState('');
   let disabled = false;
   if (!email || !password) {
     disabled = true;
+  }
+  function toggleDisPwd() {
+    if (showPwd) {
+      setShowPwd(false);
+    } else {
+      setShowPwd(true);
+    }
   }
   async function loginToAccount(e) {
     e.preventDefault();
@@ -46,11 +56,13 @@ const Login = () => {
         navigate('/dashboard');
       }
     } catch (err) {
-      console.log(err);
+      setError(err.message);
+      setPassword('');
     }
   }
   return (
     <main id="register-page">
+      {error && <h1 className="login-error">{error}</h1>}
       <header>
       <h1>Log in to account</h1>
       </header>
@@ -61,7 +73,8 @@ const Login = () => {
         </label>
         <label htmlFor="password">
           <p>Password:</p>
-          <input type="password" id="password" placeholder='Password' value={password} onChange={({target: {value}}) => setPassword(value) } />
+          <input type={showPwd ? 'text' : 'password'} id="password" placeholder='Password' value={password} onChange={({ target: { value } }) => setPassword(value)} />
+          <button className="pwd-btn" type="button" onClick={toggleDisPwd}>{!showPwd ? <AiOutlineEye /> : <AiOutlineEyeInvisible />}</button>
         </label>
         <button className='submit-btn' type="submit" disabled={disabled}>Log In</button>
       </form>
